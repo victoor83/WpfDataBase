@@ -9,6 +9,8 @@
     <Grid>
         <Grid>
             <DataGrid Name="grdEmployee" />
+            <TextBox Name ="txtCity" HorizontalAlignment="Left" Height="18" Margin="435,384,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135"/>
         </Grid>
+        <Button Content="Get customers from city:" HorizontalAlignment="Left" Margin="293,383,0,0" Width="141" Click="Button_Click" Height="20" VerticalAlignment="Top"/>
     </Grid>
 </Window>
