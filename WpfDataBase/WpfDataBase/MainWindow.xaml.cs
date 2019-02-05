@@ -2,6 +2,10 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using System;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace WpfDataBase
 {
@@ -37,8 +41,34 @@ namespace WpfDataBase
 
                 grdEmployee.ItemsSource = dt.DefaultView;
 
+                JsonConvertText(con, cmd);
             }
 
+        }
+
+        private void JsonConvertText(SqlConnection con, SqlCommand cmd)
+        {
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Person> persons = new List<Person>();
+
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == string.Empty)
+                    break;
+
+                var person = new Person();
+                person.Name = reader[0].ToString();
+                person.City = reader[1].ToString();
+                person.Zip = Convert.ToInt32(reader[2]);
+                persons.Add(person);
+            }
+            reader.Close();
+            con.Close();
+
+            string json = JsonConvert.SerializeObject(persons);
+            File.WriteAllText(@"c:\temp\jsonTest.json", json);
+            labJson.Content = json;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

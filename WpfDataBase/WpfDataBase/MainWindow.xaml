@@ -10,6 +10,7 @@
         <Grid>
             <DataGrid Name="grdEmployee" />
             <TextBox Name ="txtCity" HorizontalAlignment="Left" Height="18" Margin="435,384,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135"/>
+            <Label Name ="labJson" Content="Label" HorizontalAlignment="Right" Margin="0,374,723,0" RenderTransformOrigin="0.325,-2.654" Height="26" VerticalAlignment="Top"/>
         </Grid>
         <Button Content="Get customers from city:" HorizontalAlignment="Left" Margin="293,383,0,0" Width="141" Click="Button_Click" Height="20" VerticalAlignment="Top"/>
     </Grid>
